@@ -1,0 +1,21 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: flaskdemocluster
+  labels: 
+    app: flaskdemocluster
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: flaskdemocluster
+  template:
+    metadata:
+      labels:
+        app: flaskdemocluster
+    spec:
+      containers:
+        - name: "flaskdemoclustercont"
+          image: "stevendev/pipelines-flask-docker:187"
+          ports:
+          - containerPort: 80
